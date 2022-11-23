@@ -63,22 +63,86 @@ function feast(beast, dish) {
   }
 }
 
-
-
-
 // Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.
 
 // Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
 
-function lovefunc(flower1, flower2){
- if(flower1 % 2 === 0 && flower2 % 2 !== 0) {
-  return true;
- } else if(flower2 % 2 === 0 && flower1 % 2 !== 0) {
-  return true;
- } else {
-  return false
- }
+function lovefunc(flower1, flower2) {
+  if (flower1 % 2 === 0 && flower2 % 2 !== 0) {
+    return true;
+  } else if (flower2 % 2 === 0 && flower1 % 2 !== 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+
+// Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+// The output should be two capital letters with a dot separating them.
+
+// It should look like this:
+
+// Sam Harris => S.H
+
+// patrick feeney => P.F
+
+function abbrevName(name){
+  let nameSplit = name.split(' ');
+  let firstLetter = (nameSplit[0][0]).toUpperCase();
+  let secondLetter = (nameSplit[1][0]).toUpperCase();
+  let abbreviation = [firstLetter, secondLetter];
+  return abbreviation.join('.');
+
 };
 
+
+
+
+//Simple, remove the spaces from the string, then return the resultant string.
+
+function noSpace(x){
+  return x.split(' ').join('');
+};
+
+
+
+
+//You are given two interior angles (in degrees) of a triangle.
+// Write a function to return the 3rd.
+// Note: only positive integers will be tested.
+
+function otherAngle(a, b) {
+  return 180-(a+b);
+};
+
+
+
+
+//Our football team has finished the championship.
+// Our team's match results are recorded in a collection of strings. Each match is represented by a string in the format "x:y", where x is our team's score and y is our opponents score.
+// For example: ["3:1", "2:2", "0:1", ...]
+// Points are awarded for each match as follows:
+// if x > y: 3 points (win)
+// if x < y: 0 points (loss)
+// if x = y: 1 point (tie)
+// We need to write a function that takes this collection and returns the number of points our team (x) got in the championship by the rules given above.
+
+function points(games) {
+  ourTotal = 0
+  games.forEach(function(set) {
+    let ourScore = set[0];
+    let theirScore = set[2];
+    if(ourScore > theirScore) {
+      ourTotal += 3
+    } else if(ourScore === theirScore) {
+      ourTotal += 1
+    };
+  })
+  return ourTotal;
+};
 
 
