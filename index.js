@@ -186,8 +186,86 @@ function romanToInt(romanNumeral) {
     }
 
   }
-  console.log(total);
+  return total;
 }
 
 
-romanToInt("MCMXCVI");
+
+
+//Given an integer num, return the number of steps to reduce it to zero.
+// In one step, if the current number is even, you have to divide it by 2, 
+// otherwise, you have to subtract 1 from it.
+// External.
+// Input: num = 14
+// Output: 6
+
+function numSteps(num) {
+  steps = 0;
+  while(num !=0) {
+    if(num % 2 === 0) {
+      num = num/2;
+      steps += 1;
+    } else if (num % 2 != 0) {
+      num = num - 1;
+      steps += 1;
+    }
+
+    }
+    return steps;
+};
+
+
+
+
+//Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+// You can return the answer in any order.
+// Example 1:
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+function twoSums(nums, target) {
+ 
+  for(var i = 0; i < nums.length; i++) {
+    for(var j = i + 1; j < nums.length; j++) {
+      if(nums[i] + nums[j] === target) {
+        return ([i, j]);
+      } 
+    }
+}
+};
+
+
+twoSums([2, 15,11,7], 9);
+
+
+function convert(celsius) {
+  return [celsius + 273.15 ,(celsius * (9/5)) + 32];
+};
+
+
+
+
+//Check to see if a string has the same amount of 'x's and 'o's. 
+// The method must return a boolean and be case insensitive. 
+// The string can contain any char.
+
+
+function XO(str) {
+  let x = [];
+  let o = [];
+  for(let i=0; i<str.length; i++) {
+    if(str[i] === "x" || str[i] === "X") {
+      x.push(str[i]);
+    } else if(str[i] === "o" || str[i] === "O") {
+      o.push(str[i]);
+    }
+  }
+  if(x.length === o.length) {
+    return true;
+  } else{
+    return false;
+  }
+}
+
