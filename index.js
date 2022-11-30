@@ -77,46 +77,33 @@ function lovefunc(flower1, flower2) {
   }
 }
 
-
-
-
 // Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
 // The output should be two capital letters with a dot separating them.
 // It should look like this:
 // Sam Harris => S.H
 // patrick feeney => P.F
 
-function abbrevName(name){
-  let nameSplit = name.split(' ');
-  let firstLetter = (nameSplit[0][0]).toUpperCase();
-  let secondLetter = (nameSplit[1][0]).toUpperCase();
+function abbrevName(name) {
+  let nameSplit = name.split(" ");
+  let firstLetter = nameSplit[0][0].toUpperCase();
+  let secondLetter = nameSplit[1][0].toUpperCase();
   let abbreviation = [firstLetter, secondLetter];
-  return abbreviation.join('.');
-
-};
-
-
-
+  return abbreviation.join(".");
+}
 
 //Simple, remove the spaces from the string, then return the resultant string.
 
-function noSpace(x){
-  return x.split(' ').join('');
-};
-
-
-
+function noSpace(x) {
+  return x.split(" ").join("");
+}
 
 //You are given two interior angles (in degrees) of a triangle.
 // Write a function to return the 3rd.
 // Note: only positive integers will be tested.
 
 function otherAngle(a, b) {
-  return 180-(a+b);
-};
-
-
-
+  return 180 - (a + b);
+}
 
 //Our football team has finished the championship.
 // Our team's match results are recorded in a collection of strings. Each match is represented by a string in the format "x:y", where x is our team's score and y is our opponents score.
@@ -128,21 +115,18 @@ function otherAngle(a, b) {
 // We need to write a function that takes this collection and returns the number of points our team (x) got in the championship by the rules given above.
 
 function points(games) {
-  ourTotal = 0
-  games.forEach(function(set) {
+  ourTotal = 0;
+  games.forEach(function (set) {
     let ourScore = set[0];
     let theirScore = set[2];
-    if(ourScore > theirScore) {
-      ourTotal += 3
-    } else if(ourScore === theirScore) {
-      ourTotal += 1
-    };
-  })
+    if (ourScore > theirScore) {
+      ourTotal += 3;
+    } else if (ourScore === theirScore) {
+      ourTotal += 1;
+    }
+  });
   return ourTotal;
-};
-
-
-
+}
 
 //Roman Numeral to Int
 // Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
@@ -159,41 +143,35 @@ function points(games) {
 
 // Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-// I can be placed before V (5) and X (10) to make 4 and 9. 
-// X can be placed before L (50) and C (100) to make 40 and 90. 
+// I can be placed before V (5) and X (10) to make 4 and 9.
+// X can be placed before L (50) and C (100) to make 40 and 90.
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given a roman numeral, convert it to an integer.
 
 function romanToInt(romanNumeral) {
-
-  let numberConverter = {I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000};
+  let numberConverter = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
 
   let total = 0;
 
-  for(let i=0; i<romanNumeral.length; i++) {
-
+  for (let i = 0; i < romanNumeral.length; i++) {
     let currentPosition = numberConverter[romanNumeral.charAt(i)];
-    let nextPosition = numberConverter[romanNumeral.charAt(i + 1)]
-    if(nextPosition) {
-      if(currentPosition >= nextPosition) {
+    let nextPosition = numberConverter[romanNumeral.charAt(i + 1)];
+    if (nextPosition) {
+      if (currentPosition >= nextPosition) {
         total += currentPosition;
-        } else {
-          total += (nextPosition - currentPosition)
-          i++
-        }
+      } else {
+        total += nextPosition - currentPosition;
+        i++;
+      }
     } else {
       total += currentPosition;
     }
-
   }
   return total;
 }
 
-
-
-
 //Given an integer num, return the number of steps to reduce it to zero.
-// In one step, if the current number is even, you have to divide it by 2, 
+// In one step, if the current number is even, you have to divide it by 2,
 // otherwise, you have to subtract 1 from it.
 // External.
 // Input: num = 14
@@ -201,21 +179,17 @@ function romanToInt(romanNumeral) {
 
 function numSteps(num) {
   steps = 0;
-  while(num !=0) {
-    if(num % 2 === 0) {
-      num = num/2;
+  while (num != 0) {
+    if (num % 2 === 0) {
+      num = num / 2;
       steps += 1;
     } else if (num % 2 != 0) {
       num = num - 1;
       steps += 1;
     }
-
-    }
-    return steps;
-};
-
-
-
+  }
+  return steps;
+}
 
 //Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -226,46 +200,65 @@ function numSteps(num) {
 // Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 function twoSums(nums, target) {
- 
-  for(var i = 0; i < nums.length; i++) {
-    for(var j = i + 1; j < nums.length; j++) {
-      if(nums[i] + nums[j] === target) {
-        return ([i, j]);
-      } 
+  for (var i = 0; i < nums.length; i++) {
+    for (var j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
     }
+  }
 }
-};
 
-
-twoSums([2, 15,11,7], 9);
-
+twoSums([2, 15, 11, 7], 9);
 
 function convert(celsius) {
-  return [celsius + 273.15 ,(celsius * (9/5)) + 32];
-};
+  return [celsius + 273.15, celsius * (9 / 5) + 32];
+}
 
-
-
-
-//Check to see if a string has the same amount of 'x's and 'o's. 
-// The method must return a boolean and be case insensitive. 
+//Check to see if a string has the same amount of 'x's and 'o's.
+// The method must return a boolean and be case insensitive.
 // The string can contain any char.
-
 
 function XO(str) {
   let x = [];
   let o = [];
-  for(let i=0; i<str.length; i++) {
-    if(str[i] === "x" || str[i] === "X") {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "x" || str[i] === "X") {
       x.push(str[i]);
-    } else if(str[i] === "o" || str[i] === "O") {
+    } else if (str[i] === "o" || str[i] === "O") {
       o.push(str[i]);
     }
   }
-  if(x.length === o.length) {
+  if (x.length === o.length) {
     return true;
-  } else{
+  } else {
     return false;
   }
 }
+
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain
+// anything but exactly 4 digits or exactly 6 digits.
+// If the function is passed a valid PIN string, return true, else return false.
+
+function validatePin(pin) {
+  pinNums = [];
+  for (var i = 0; i < pin.length; i++) {
+    let converted = parseInt(pin[i]);
+    if (converted >= 0 || converted <= 9) {
+      pinNums.push(converted);
+    }
+  }
+  if (pinNums.length === 4 || pinNums.length === 6) {
+    if (pinNums.length === pin.length) {
+      console.log("true");
+    } else {
+      console.log("false");
+    }
+  } else {
+    console.log("false");
+  }
+};
+
+
+validatePin('-1234');
 
